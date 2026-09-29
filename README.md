@@ -25,7 +25,3 @@ src/
   lib/            template fill, severity, machine status helpers
   styles/ds/      design-system tokens + component CSS (from the handoff)
 ```
-
-## Before production
-- Remove `DemoBanner` and the Admin/User role switch in `Sidebar`. Take the role from auth instead.
-- Replace the sample data in `src/api/` with real endpoints: `GET /machines`, `GET /alerts`, `POST /alerts/:id/ack`, `GET/POST/PATCH /rules`, `GET/PATCH /channels`, `GET/PUT /templates/:event`. `@tanstack/react-query` is a good fit for polling live machine status.
