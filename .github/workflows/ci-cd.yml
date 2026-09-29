@@ -30,11 +30,30 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-  # Add an e2e job here later and list it in deploy's `needs`.
+  e2e:
+    name: E2E tests
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
 
   deploy:
     name: Deploy to Vercel (${{ github.event_name == 'pull_request' && 'preview' || 'production' }})
-    needs: [build]
+    needs: [build, e2e]
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.event_name == 'pull_request' && 'preview' || 'production' }}
