@@ -25,3 +25,11 @@ src/
   lib/            template fill, severity, machine status helpers
   styles/ds/      design-system tokens + component CSS (from the handoff)
 ```
+## CI/CD
+[`.github/workflows/ci-cd.yml`](.github/workflows/ci-cd.yml) builds the app in GitHub Actions, then deploys it with the Vercel CLI:
+- Pull request to `main`: build, then a **preview** deploy
+- Push to `main`: build, then a **production** deploy
+
+Vercel's own Git auto-deploy is turned off in `vercel.json`, so every deploy goes through the workflow.
+
+Required repository secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
