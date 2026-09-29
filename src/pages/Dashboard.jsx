@@ -20,7 +20,7 @@ export default function Dashboard() {
   return (
     <>
       <PageHeader
-        eyebrow="MACHINE DASHBOARD · LIVE"
+        eyebrow="MACHINE DASHBOARD"
         title="Capacity & thresholds"
         subtitle="Current utilization against each machine’s alert threshold, plus remaining life on parts and consumables."
       />
