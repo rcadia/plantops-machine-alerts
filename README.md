@@ -32,4 +32,4 @@ src/
 
 Vercel's own Git auto-deploy is turned off in `vercel.json`, so every deploy goes through the workflow.
 
-Required repository secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
+Required repository secret: `VERCEL_TOKEN`. The Vercel team and project IDs are set in the workflow file.
