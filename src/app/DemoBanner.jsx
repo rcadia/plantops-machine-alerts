@@ -9,7 +9,7 @@ export function DemoBanner() {
     <>
       <div className="demo-banner">
         <Badge variant="info">DEMO</Badge>
-        <span className="demo-banner-text">This is a concept mockup of proposed features. All machines, alerts and people are sample data.</span>
+        <span className="demo-banner-text">This is a concept mockup of proposed features. All machines, alerts and people are static data.</span>
         <Button variant="ghost" size="sm" onClick={() => setAboutOpen(true)}>
           About this demo
         </Button>
