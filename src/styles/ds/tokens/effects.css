@@ -1,0 +1,23 @@
+/* Demo IQ · Radii, elevation, and motion tokens */
+
+:root {
+  /* radii */
+  --diq-r-sm:   8px;
+  --diq-r-md:   10px;
+  --diq-r-lg:   16px;
+  --diq-r-pill: 999px;
+
+  /* elevation */
+  --diq-shadow:    0 1px 2px rgba(23,22,31,.04), 0 8px 24px rgba(23,22,31,.05);
+  --diq-shadow-lg: 0 24px 60px rgba(23,22,31,.22);
+  --diq-ring:      0 0 0 3px rgba(122,59,240,.16);
+
+  /* motion */
+  --diq-ease: cubic-bezier(.4, 0, .2, 1);  /* @kind other */
+  --diq-dur:  .18s;  /* @kind other */
+}
+
+[data-theme="dark"] {
+  --diq-shadow:    0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+  --diq-shadow-lg: 0 24px 60px rgba(0,0,0,.5);
+}

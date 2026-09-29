@@ -1,0 +1,15 @@
+/* Demo IQ · Base
+   Scope the reset to .diq so the library never fights a host page.
+   Component classes (.btn, .card, …) are global and work anywhere. */
+
+.diq, .diq * { box-sizing: border-box; }
+.diq {
+  font-family: var(--diq-font-body);
+  color: var(--diq-body);
+  -webkit-font-smoothing: antialiased;
+}
+.diq ::selection { background: rgba(122,59,240,.2); }
+
+/* Sensible link defaults (the brand keeps text links rare; when they appear, tint violet) */
+a { color: var(--diq-primary); text-decoration: none; }
+a:hover { color: #8B54F0; text-decoration: underline; }

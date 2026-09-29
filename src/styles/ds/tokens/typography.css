@@ -1,0 +1,40 @@
+/* Demo IQ · Typography tokens + helpers
+   Personality lives in the mark, so the type stays clear.
+   Hierarchy comes from weight, not extra fonts. */
+
+:root {
+  --diq-font-display: 'Plus Jakarta Sans', system-ui, sans-serif;  /* display & headings */
+  --diq-font-body:    'DM Sans', system-ui, sans-serif;            /* body & UI */
+  --diq-font-mono:    'Fira Code', ui-monospace, monospace;        /* code, scores, data */
+
+  /* type scale (px) */
+  --diq-fs-display: 46px;
+  --diq-fs-h1:      32px;
+  --diq-fs-h2:      24px;
+  --diq-fs-h3:      19px;
+  --diq-fs-body:    16px;
+  --diq-fs-sm:      14px;
+  --diq-fs-caption: 12px;
+
+  /* weights */
+  --diq-fw-regular:  400;  /* @kind font */
+  --diq-fw-medium:   500;  /* @kind font */
+  --diq-fw-semibold: 600;  /* @kind font */
+  --diq-fw-bold:     700;  /* @kind font */
+  --diq-fw-heavy:    800;  /* @kind font */
+}
+
+/* Type helpers */
+.diq-display { font: 800 46px/1.05 var(--diq-font-display); letter-spacing: -.025em; color: var(--diq-ink); margin: 0; }
+.diq-h1 { font: 700 32px/1.15 var(--diq-font-display); letter-spacing: -.02em; color: var(--diq-ink); margin: 0; }
+.diq-h2 { font: 600 24px/1.2 var(--diq-font-display); letter-spacing: -.015em; color: var(--diq-ink); margin: 0; }
+.diq-h3 { font: 600 19px/1.3 var(--diq-font-display); letter-spacing: -.01em; color: var(--diq-ink); margin: 0; }
+.diq-body { font: 400 16px/1.6 var(--diq-font-body); color: var(--diq-body); margin: 0; }
+.diq-caption { font: 500 12px/1.4 var(--diq-font-mono); letter-spacing: .04em; color: var(--diq-muted); }
+.diq-code { font-family: var(--diq-font-mono); }
+
+.text-gradient {
+  background: var(--diq-grad-violet);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}

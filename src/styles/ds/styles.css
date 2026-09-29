@@ -1,0 +1,14 @@
+/* ============================================================
+   DEMO IQ · Design System — global entry point
+   Link this one file; it reaches every token, font, and style.
+     <link rel="stylesheet" href="styles.css">
+   Dark mode: <html data-theme="dark"> (or any wrapper).
+   ============================================================ */
+
+@import url('tokens/colors.css');
+@import url('tokens/typography.css');
+@import url('tokens/spacing.css');
+@import url('tokens/effects.css');
+@import url('base.css');
+@import url('components.css');
+@import url('animations.css');

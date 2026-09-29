@@ -1,0 +1,53 @@
+/* Demo IQ · Color tokens
+   Vibrant gradients carry the energy; quiet neutrals keep them center stage.
+   Light is the default; [data-theme="dark"] flips the neutrals. */
+
+:root {
+  /* --- neutrals (light) --- */
+  --diq-canvas:    #F5F5F8;   /* page background */
+  --diq-surface:   #FFFFFF;   /* cards, panels */
+  --diq-surface-2: #FAFAFC;   /* insets, inputs */
+  --diq-line:      #E6E6EA;   /* borders, dividers */
+  --diq-muted:     #8A8894;   /* captions, meta */
+  --diq-body:      #55535F;   /* body copy */
+  --diq-ink:       #17161F;   /* headings, primary text */
+  --diq-hover:     #F0EFF4;   /* hover fills */
+  --diq-code-bg:   #F8F8FB;   /* code surfaces */
+
+  /* --- brand gradients --- */
+  --diq-grad-violet:  linear-gradient(135deg, #4F7CFF, #7A3BF0 55%, #B14DF0);  /* @kind color */ /* primary / hero */
+  --diq-grad-azure:   linear-gradient(135deg, #7DE0FF, #12A4EF 50%, #0A6FD6);  /* @kind color */ /* Microsoft-native bridge */
+  --diq-grad-teal:    linear-gradient(135deg, #34E5C0, #12B981 50%, #0E9E6E);  /* @kind color */ /* success / capture-ready */
+  --diq-grad-sunset:  linear-gradient(135deg, #FF9A4D, #FB5478 50%, #E24DD6);  /* @kind color */ /* accent / energy */
+  --diq-grad-magenta: linear-gradient(135deg, #C86BFF, #7A3BF0);              /* @kind color */ /* accent */
+
+  /* --- semantic solids --- */
+  --diq-primary: #7A3BF0;
+  --diq-success: #12B981;
+  --diq-info:    #12A4EF;
+  --diq-warning: #FF9A4D;
+  --diq-danger:  #E5484D;
+
+  /* --- tinted status (text on soft bg) --- */
+  --diq-success-ink: #0E9E6E;  --diq-success-bg: rgba(18,185,129,.13);
+  --diq-info-ink:    #0A6FD6;  --diq-info-bg:    rgba(18,164,239,.13);
+  --diq-warning-ink: #C24500;  --diq-warning-bg: rgba(255,154,77,.16);
+  --diq-danger-ink:  #C0143C;  --diq-danger-bg:  rgba(229,72,77,.12);
+}
+
+[data-theme="dark"] {
+  --diq-canvas:    #121118;
+  --diq-surface:   #1A1922;
+  --diq-surface-2: #201F2A;
+  --diq-line:      #2C2B38;
+  --diq-muted:     #8E8C9C;
+  --diq-body:      #C4C3D0;
+  --diq-ink:       #F6F6FA;
+  --diq-hover:     #24232F;
+  --diq-code-bg:   #16151D;
+
+  --diq-success-bg: rgba(18,185,129,.16); --diq-success-ink: #34E5C0;
+  --diq-info-bg:    rgba(18,164,239,.16); --diq-info-ink:    #7DE0FF;
+  --diq-warning-bg: rgba(255,154,77,.18); --diq-warning-ink: #FF9A4D;
+  --diq-danger-bg:  rgba(229,72,77,.16);  --diq-danger-ink:  #FF8A8E;
+}

@@ -1,0 +1,83 @@
+/* ============================================================
+   DEMO IQ · Animation utilities + loading marks
+   Ported from source library (demo-iq.css v1.0).
+   ============================================================ */
+
+/* ---------- keyframes ---------- */
+@keyframes diq-spin    { to { transform: rotate(360deg); } }
+@keyframes diq-indet   { 0% { left: -40%; } 100% { left: 100%; } }
+@keyframes diq-shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+@keyframes diq-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes diq-slide-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes diq-slide-down { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: none; } }
+@keyframes diq-pop { 0% { opacity: 0; transform: scale(.9); } 60% { transform: scale(1.03); } 100% { opacity: 1; transform: scale(1); } }
+
+/* Run immediately on load */
+.anim-fade-in   { animation: diq-fade-in   .5s var(--diq-ease) both; }
+.anim-slide-up  { animation: diq-slide-up  .5s var(--diq-ease) both; }
+.anim-slide-down{ animation: diq-slide-down .5s var(--diq-ease) both; }
+.anim-pop       { animation: diq-pop       .4s var(--diq-ease) both; }
+
+/* Stagger children */
+.anim-stagger > *          { animation: diq-slide-up .5s var(--diq-ease) both; }
+.anim-stagger > *:nth-child(1) { animation-delay: .00s; }
+.anim-stagger > *:nth-child(2) { animation-delay: .07s; }
+.anim-stagger > *:nth-child(3) { animation-delay: .14s; }
+.anim-stagger > *:nth-child(4) { animation-delay: .21s; }
+.anim-stagger > *:nth-child(5) { animation-delay: .28s; }
+.anim-stagger > *:nth-child(6) { animation-delay: .35s; }
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s var(--diq-ease), transform .6s var(--diq-ease); }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* ---------- LOADING SCREENS ---------- */
+.diq-loading {
+  position: fixed; inset: 0; z-index: 200;
+  display: grid; place-items: center;
+  background: radial-gradient(120% 120% at 50% 40%, var(--diq-surface) 0%, var(--diq-canvas) 62%, var(--diq-canvas) 100%);
+  transition: opacity .45s var(--diq-ease), visibility .45s;
+}
+.diq-loading.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.diq-loading--inline { position: absolute; z-index: 1; }
+
+.diq-loading-inner { display: flex; flex-direction: column; align-items: center; }
+.diq-loading-label {
+  font: 500 12px/1 var(--diq-font-mono); letter-spacing: .3em; text-transform: uppercase;
+  color: var(--diq-muted); animation: diq-loading-fade 2.4s var(--diq-ease) infinite;
+}
+
+/* Aurora Spin */
+.diq-aurora { width: 128px; height: 128px; display: block; margin-bottom: 26px; }
+.diq-aurora-ring  { transform-box: view-box; transform-origin: center; animation: diq-spin 7s linear infinite; }
+.diq-aurora-petal { animation: diq-petal-pulse 2.4s var(--diq-ease) infinite; }
+.diq-aurora-core  { fill: var(--diq-ink); transform-box: view-box; transform-origin: center; animation: diq-sparkle-pulse 2.4s var(--diq-ease) infinite; }
+.diq-aurora-spark { fill: var(--diq-ink); transform-box: view-box; transform-origin: 66% 34%; animation: diq-twinkle 2.4s var(--diq-ease) infinite .7s; }
+
+/* Lockup Shimmer */
+.diq-lockup { width: min(100%, 380px); height: auto; display: block; margin-bottom: 34px; }
+.diq-lockup-demo  { fill: var(--diq-muted); }
+.diq-lockup-iq    { fill: var(--diq-ink); }
+.diq-lockup-core  { fill: var(--diq-ink); }
+.diq-lockup-shine { transform-box: view-box; animation: diq-shine 3.8s var(--diq-ease) infinite; }
+
+@keyframes diq-petal-pulse   { 0%,100% { opacity: .22; } 50% { opacity: .95; } }
+@keyframes diq-sparkle-pulse { 0%,100% { transform: scale(.78); opacity: .65; } 50% { transform: scale(1.15); opacity: 1; } }
+@keyframes diq-twinkle       { 0%,100% { transform: scale(.3); opacity: 0; } 50% { transform: scale(1); opacity: 1; } }
+@keyframes diq-loading-fade  { 0%,100% { opacity: .45; } 50% { opacity: .9; } }
+@keyframes diq-shine {
+  0%       { transform: translateX(-220px) skewX(-12deg); }
+  42%,100% { transform: translateX(660px)  skewX(-12deg); }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .diq *, .anim-fade-in, .anim-slide-up, .anim-slide-down, .anim-pop,
+  .anim-stagger > *, .reveal { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+  .diq-aurora-ring, .diq-aurora-petal, .diq-aurora-core, .diq-aurora-spark,
+  .diq-loading-label, .diq-lockup-shine { animation: none !important; }
+  .diq-aurora-petal { opacity: .86; }
+  .diq-aurora-core, .diq-aurora-spark { opacity: 1; transform: none; }
+  .diq-lockup-shine { opacity: 0; }
+}

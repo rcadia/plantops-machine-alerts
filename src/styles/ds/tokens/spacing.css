@@ -1,0 +1,16 @@
+/* Demo IQ · Spacing scale
+   A soft 4px base. Component paddings in the source aren't rigidly gridded
+   (buttons are 12/20, fields 11/13) — these tokens cover layout gaps. */
+
+:root {
+  --diq-space-1:  4px;
+  --diq-space-2:  8px;
+  --diq-space-3:  12px;
+  --diq-space-4:  16px;
+  --diq-space-5:  20px;
+  --diq-space-6:  24px;
+  --diq-space-8:  32px;
+  --diq-space-10: 40px;
+  --diq-space-12: 48px;
+  --diq-space-16: 64px;
+}
