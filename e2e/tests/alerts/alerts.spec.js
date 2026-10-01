@@ -21,7 +21,7 @@ test('acknowledged alerts stay acknowledged after navigating away', async ({ pag
 
   await alertsPage.sidebar.goTo('Dashboard');
   await expect(page).toHaveURL(/\/dashboard$/);
-  await alertsPage.sidebar.goTo(/Alerts/);
+  await alertsPage.sidebar.goTo('Alerts');
 
   await expect(alertsPage.acknowledgedBy('Stretch film low', 'R. Bendal')).toBeVisible();
   await expect(alertsPage.sidebar.alertsBadge).toHaveText('6');

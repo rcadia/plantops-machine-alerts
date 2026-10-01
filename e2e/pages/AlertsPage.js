@@ -1,27 +1,29 @@
+import L from '../locators/alerts.json' with { type: 'json' };
 import { BasePage } from './BasePage';
+import { sel } from './selector';
 
 export class AlertsPage extends BasePage {
   path = '/alerts';
 
   constructor(page) {
     super(page);
-    this.rows = page.locator('.alert-row');
+    this.rows = page.locator(L.rows);
   }
 
   row(title) {
-    return this.rows.filter({ hasText: title });
+    return this.page.locator(sel(L.row, { title }));
   }
 
-  filter(dept) {
-    return this.page.getByRole('button', { name: dept, exact: true });
+  filter(department) {
+    return this.page.locator(sel(L.btnFilter, { department }));
   }
 
-  async filterBy(dept) {
-    await this.filter(dept).click();
+  async filterBy(department) {
+    await this.filter(department).click();
   }
 
   acknowledgeButton(title) {
-    return this.row(title).getByRole('button', { name: 'Acknowledge' });
+    return this.row(title).locator(L.btnAcknowledge);
   }
 
   async acknowledge(title) {
@@ -29,6 +31,6 @@ export class AlertsPage extends BasePage {
   }
 
   acknowledgedBy(title, who) {
-    return this.row(title).getByText(`Acknowledged · ${who}`);
+    return this.row(title).locator(sel(L.lblAcknowledgedBy, { who }));
   }
 }

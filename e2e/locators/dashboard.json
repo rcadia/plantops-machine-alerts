@@ -1,0 +1,9 @@
+{
+  "machineCards": ".machine-card",
+  "machineCard": ".machine-card:has-text('{machine}')",
+  "kpi": ".kpi:has-text('{label}')",
+  "lblKpiValue": ".kpi-value",
+  "lblMachineStatus": ".badge",
+  "lblMachineCapacity": ".capacity-nums",
+  "lblPartLife": ".part-row:has-text('{part}') .part-pct"
+}

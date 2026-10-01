@@ -1,0 +1,13 @@
+{
+  "dlgNewRule": "role=dialog[name='New routing rule']",
+  "txtRuleName": "role=textbox[name='Rule name']",
+  "ddlDepartment": "role=combobox[name='Department']",
+  "txtRecipients": "role=textbox[name='Recipients']",
+  "lblSummary": ".summary-text",
+  "lblError": "role=alert",
+  "btnRemoveRecipient": ".chip:has-text('{recipient}') >> role=button[name='Remove']",
+  "tabSeverity": "role=tab[name='{severity}']",
+  "chkChannel": "role=checkbox[name='{channel}']",
+  "btnSave": "role=button[name='Save rule']",
+  "btnCancel": "role=button[name='Cancel']"
+}

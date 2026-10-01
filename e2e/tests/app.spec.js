@@ -5,7 +5,7 @@ test('dashboard shows KPIs and every machine', async ({ page, dashboardPage }) =
 
   await expect(page).toHaveURL(/\/dashboard$/);
   await expect(dashboardPage.heading).toHaveText('Capacity & thresholds');
-  await expect(page.getByText('5/6')).toBeVisible();
+  await expect(dashboardPage.kpiValue('MACHINES ONLINE')).toHaveText('5/6');
   await expect(dashboardPage.machineCards).toHaveCount(6);
   await expect(dashboardPage.machineStatus('Packaging unit')).toHaveText('Down');
 });
@@ -62,7 +62,7 @@ test('user role only sees dashboard and their own alerts', async ({ page, rulesP
   await expect(rulesPage.sidebar.link('Routing rules')).toHaveCount(0);
   await expect(rulesPage.sidebar.link('Channels')).toHaveCount(0);
 
-  await rulesPage.sidebar.goTo(/Alerts/);
+  await rulesPage.sidebar.goTo('Alerts');
   await expect(alertsPage.rows).toHaveCount(3);
   await expect(alertsPage.filter('Production')).toHaveCount(0);
 });

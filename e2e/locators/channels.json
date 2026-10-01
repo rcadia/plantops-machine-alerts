@@ -1,0 +1,13 @@
+{
+  "card": ".channel-card:has-text('{channel}')",
+  "lblStatus": ".badge",
+  "tglChannel": "role=switch",
+  "txtSubject": "role=textbox[name='Subject']",
+  "txtBody": "role=textbox[name='Body']",
+  "btnVariable": "role=button[name='{token}']",
+  "tabPreview": "role=tab[name='{mode}']",
+  "lblEmailSubject": ".email-subject",
+  "lblEmailBody": ".email-body",
+  "lblChatMessage": ".chat-msg",
+  "lblSmsBubble": ".sms-bubble"
+}

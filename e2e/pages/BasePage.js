@@ -1,3 +1,4 @@
+import L from '../locators/common.json' with { type: 'json' };
 import { Sidebar } from './Sidebar';
 
 export class BasePage {
@@ -6,7 +7,7 @@ export class BasePage {
   constructor(page) {
     this.page = page;
     this.sidebar = new Sidebar(page);
-    this.heading = page.getByRole('heading', { level: 1 });
+    this.heading = page.locator(L.lblHeading);
   }
 
   async goto() {
@@ -14,4 +15,4 @@ export class BasePage {
   }
 }
 
-export const toggleSwitch = (scope) => scope.locator('label.switch').click();
+export const toggleSwitch = (scope) => scope.locator(L.tglSwitch).click();

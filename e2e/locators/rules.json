@@ -1,0 +1,6 @@
+{
+  "rows": ".rules-grid:not(.is-head)",
+  "row": ".rules-grid:not(.is-head):has-text('{trigger}')",
+  "tglRule": "role=switch",
+  "btnAddRule": "role=button[name='+ Add rule']"
+}

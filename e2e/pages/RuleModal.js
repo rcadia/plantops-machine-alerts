@@ -1,11 +1,14 @@
+import L from '../locators/ruleModal.json' with { type: 'json' };
+import { sel } from './selector';
+
 export class RuleModal {
   constructor(page) {
-    this.dialog = page.getByRole('dialog', { name: 'New routing rule' });
-    this.name = this.dialog.getByLabel('Rule name');
-    this.department = this.dialog.getByLabel('Department');
-    this.recipients = this.dialog.getByLabel('Recipients');
-    this.summary = this.dialog.locator('.summary-text');
-    this.error = this.dialog.getByRole('alert');
+    this.dialog = page.locator(L.dlgNewRule);
+    this.name = this.dialog.locator(L.txtRuleName);
+    this.department = this.dialog.locator(L.ddlDepartment);
+    this.recipients = this.dialog.locator(L.txtRecipients);
+    this.summary = this.dialog.locator(L.lblSummary);
+    this.error = this.dialog.locator(L.lblError);
   }
 
   async addRecipient(name) {
@@ -13,23 +16,23 @@ export class RuleModal {
     await this.recipients.press('Enter');
   }
 
-  async removeRecipient(name) {
-    await this.dialog.locator('.chip', { hasText: name }).getByRole('button', { name: 'Remove' }).click();
+  async removeRecipient(recipient) {
+    await this.dialog.locator(sel(L.btnRemoveRecipient, { recipient })).click();
   }
 
-  async setSeverity(sev) {
-    await this.dialog.getByRole('tab', { name: sev }).click();
+  async setSeverity(severity) {
+    await this.dialog.locator(sel(L.tabSeverity, { severity })).click();
   }
 
-  channel(label) {
-    return this.dialog.getByLabel(label);
+  channel(channel) {
+    return this.dialog.locator(sel(L.chkChannel, { channel }));
   }
 
   async save() {
-    await this.dialog.getByRole('button', { name: 'Save rule' }).click();
+    await this.dialog.locator(L.btnSave).click();
   }
 
   async cancel() {
-    await this.dialog.getByRole('button', { name: 'Cancel' }).click();
+    await this.dialog.locator(L.btnCancel).click();
   }
 }

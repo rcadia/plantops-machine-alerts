@@ -1,0 +1,7 @@
+{
+  "rows": ".alert-row",
+  "row": ".alert-row:has-text('{title}')",
+  "btnFilter": "role=button[name='{department}']",
+  "btnAcknowledge": "role=button[name='Acknowledge']",
+  "lblAcknowledgedBy": ".acked-by:has-text('Acknowledged · {who}')"
+}

@@ -1,39 +1,41 @@
+import L from '../locators/channels.json' with { type: 'json' };
 import { BasePage, toggleSwitch } from './BasePage';
+import { sel } from './selector';
 
 export class ChannelsPage extends BasePage {
   path = '/channels';
 
   constructor(page) {
     super(page);
-    this.subject = page.getByLabel('Subject');
-    this.body = page.getByLabel('Body');
-    this.emailSubject = page.locator('.email-subject');
-    this.emailBody = page.locator('.email-body');
-    this.chatMessage = page.locator('.chat-msg');
-    this.smsBubble = page.locator('.sms-bubble');
+    this.subject = page.locator(L.txtSubject);
+    this.body = page.locator(L.txtBody);
+    this.emailSubject = page.locator(L.lblEmailSubject);
+    this.emailBody = page.locator(L.lblEmailBody);
+    this.chatMessage = page.locator(L.lblChatMessage);
+    this.smsBubble = page.locator(L.lblSmsBubble);
   }
 
-  card(name) {
-    return this.page.locator('.channel-card', { hasText: name });
+  card(channel) {
+    return this.page.locator(sel(L.card, { channel }));
   }
 
-  status(name) {
-    return this.card(name).locator('.badge');
+  status(channel) {
+    return this.card(channel).locator(L.lblStatus);
   }
 
-  channelSwitch(name) {
-    return this.card(name).getByRole('switch');
+  channelSwitch(channel) {
+    return this.card(channel).locator(L.tglChannel);
   }
 
-  async toggleChannel(name) {
-    await toggleSwitch(this.card(name));
+  async toggleChannel(channel) {
+    await toggleSwitch(this.card(channel));
   }
 
   async insertVariable(token) {
-    await this.page.getByRole('button', { name: token }).click();
+    await this.page.locator(sel(L.btnVariable, { token })).click();
   }
 
   async previewAs(mode) {
-    await this.page.getByRole('tab', { name: mode }).click();
+    await this.page.locator(sel(L.tabPreview, { mode })).click();
   }
 }

@@ -1,0 +1,6 @@
+{
+  "nav": "role=navigation",
+  "lnkNav": "role=link[name=/{page}/]",
+  "lblAlertsCount": "role=link[name=/Alerts/] >> .count-pill",
+  "tabRole": ".sidebar-footer >> role=tab[name='{role}']"
+}

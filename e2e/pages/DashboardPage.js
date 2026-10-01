@@ -1,34 +1,36 @@
+import L from '../locators/dashboard.json' with { type: 'json' };
 import { BasePage } from './BasePage';
+import { sel } from './selector';
 
 export class DashboardPage extends BasePage {
   path = '/dashboard';
 
   constructor(page) {
     super(page);
-    this.machineCards = page.locator('.machine-card');
+    this.machineCards = page.locator(L.machineCards);
   }
 
   kpi(label) {
-    return this.page.locator('.kpi', { hasText: label });
+    return this.page.locator(sel(L.kpi, { label }));
   }
 
   kpiValue(label) {
-    return this.kpi(label).locator('.kpi-value');
+    return this.kpi(label).locator(L.lblKpiValue);
   }
 
-  machine(text) {
-    return this.machineCards.filter({ hasText: text });
+  machine(machine) {
+    return this.page.locator(sel(L.machineCard, { machine }));
   }
 
-  machineStatus(text) {
-    return this.machine(text).locator('.badge');
+  machineStatus(machine) {
+    return this.machine(machine).locator(L.lblMachineStatus);
   }
 
-  machineCapacity(text) {
-    return this.machine(text).locator('.capacity-nums');
+  machineCapacity(machine) {
+    return this.machine(machine).locator(L.lblMachineCapacity);
   }
 
   partLife(machine, part) {
-    return this.machine(machine).locator('.part-row', { hasText: part }).locator('.part-pct');
+    return this.machine(machine).locator(sel(L.lblPartLife, { part }));
   }
 }
