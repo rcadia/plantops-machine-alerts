@@ -25,11 +25,16 @@ src/
   lib/            template fill, severity, machine status helpers
   styles/ds/      design-system tokens + component CSS (from the handoff)
 ```
+
+## E2E tests
+```
+e2e/
+-- locators = JSON files of selectors, one per page
+-- pages    = page object models (actions and elements, built from locators)
+-- tests    = spec files, grouped by page
+```
+
 ## CI/CD
 [`.github/workflows/ci-cd.yml`](.github/workflows/ci-cd.yml) builds the app in GitHub Actions, then deploys it with the Vercel CLI:
 - Pull request to `main`: build, then a **preview** deploy
 - Push to `main`: build, then a **production** deploy
-
-Vercel's own Git auto-deploy is turned off in `vercel.json`, so every deploy goes through the workflow.
-
-Required repository secret: `VERCEL_TOKEN`. The Vercel team and project IDs are set in the workflow file.
